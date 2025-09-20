@@ -119,12 +119,54 @@ GET /api/coaches/distribution
   "distribution": [
     {
       "coach_id": "coach-1",
-      "score": 0.85,
-      "appointments_count": 15,
-      "utilization": 0.75
+      "name": "Alice Johnson",
+      "Email": "alice@example.com",
+      "Score": 0.85,
+      "appointments_count": 4,
+      "utilization": 0.4
+    },
+    {
+      "coach_id": "coach-2",
+      "name": "Bob Smith",
+      "Email": "bob@example.com",
+      "Score": 0.72,
+      "appointments_count": 0,
+      "utilization": 0
+    },
+    {
+      "coach_id": "coach-3",
+      "name": "Carol Davis",
+      "Email": "carol@example.com",
+      "Score": 0.9,
+      "appointments_count": 7,
+      "utilization": 0.7
+    },
+    {
+      "coach_id": "coach-4",
+      "name": "David Wilson",
+      "Email": "david@example.com",
+      "Score": 0.65,
+      "appointments_count": 0,
+      "utilization": 0
+    },
+    {
+      "coach_id": "coach-5",
+      "name": "Eve Martinez",
+      "Email": "eve@example.com",
+      "Score": 0.58,
+      "appointments_count": 0,
+      "utilization": 0
+    },
+    {
+      "coach_id": "coach-6",
+      "name": "Frank Thompson",
+      "Email": "frank@example.com",
+      "Score": 0.78,
+      "appointments_count": 1,
+      "utilization": 0.1
     }
   ],
-  "fairness_score": 0.82
+  "fairness_score": 0.735424868893541
 }
 ```
 
