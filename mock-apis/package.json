@@ -1,0 +1,13 @@
+{
+  "name": "mock-apis",
+  "version": "1.0.0",
+  "description": "Mock API services for scheduling challenge",
+  "scripts": {
+    "start:calendar": "node calendar-api.js",
+    "start:crm": "node crm-webhook.js",
+    "start:auth": "node auth-service.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
