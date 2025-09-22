@@ -39,6 +39,10 @@ func splitInto15MinStarts(start, end time.Time) []time.Time {
 	return slots
 }
 
+// GetAvailability handles GET /api/availability.
+// It calls the external calendar API to fetch availability for each coach,
+// breaks the availability into 15-minute slots, and stores them in the
+// `coach_slots` table. Returns available slots for the requested coach.
 func (h *SchedulingHandler) GetAvailability(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
@@ -191,6 +195,11 @@ ORDER BY start_time, coach_id
 	}
 }
 
+// BookAppointment handles POST /api/appointments.
+// It checks coach eligibility by validating slot duration, appointment conflicts,
+// and daily appointment limits. Then it selects the coach with the highest score,
+// books the appointment in a transaction lock, updates slots, and writes to
+// the distribution log. Also triggers downstream webhooks (CRM, Auth).
 func (h *SchedulingHandler) BookAppointment(w http.ResponseWriter, r *http.Request) {
 
 
@@ -521,6 +530,10 @@ AND start_time >= $2 AND start_time < $3`, top.ID, req.StartTime, endTime)
 	json.NewEncoder(w).Encode(resp)
 }
 
+
+// CalendarWebhook handles POST /api/webhooks/calendar.
+// It receives calendar updates from the external Calendar API (e.g., slot blocked or freed).
+// Updates the `coach_slots` and `coach_appointments`table accordingly to reflect real-time changes.
 func (h *SchedulingHandler) WebhookHandler(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
@@ -704,6 +717,10 @@ VALUES ($1, $2, $3, $4, NOW(), NOW(), NOW())`
 
 }
 
+
+// GetCoachDistribution handles GET /api/coaches/distribution.
+// It aggregates appointment counts and utilization metrics for each coach,
+// computes the fairness_score across coaches, and returns distribution data.
 func (h *SchedulingHandler) GetCoachDistribution(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()

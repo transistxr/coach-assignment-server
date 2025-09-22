@@ -17,6 +17,9 @@ import (
 	"github.com/transistxr/coach-assignment-server/src/internal/structs"
 )
 
+// CRMClient sends appointment lifecycle events (e.g., created, cancelled)
+// to a mocked CRM. Includes retry with exponential backoff and
+// idempotency key support.
 type CRMClient struct {
 	baseURL    string
 	httpClient *http.Client

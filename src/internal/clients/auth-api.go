@@ -12,6 +12,9 @@ import (
 	"github.com/transistxr/coach-assignment-server/src/internal/structs"
 )
 
+// AuthClient validates API keys and verifies contact identities
+// by calling the external Auth service. Used for security checks
+// before booking appointments.
 type AuthClient struct {
 	baseURL    string
 	httpClient *http.Client

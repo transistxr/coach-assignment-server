@@ -16,6 +16,8 @@ import (
 )
 
 
+// AvailabilityClient is a client wrapper for the external Calendar API.
+// It fetches raw availability data for a coach and lets you block and release slots
 type AvailabilityClient struct {
 	BaseURL string
 	Client  *http.Client
