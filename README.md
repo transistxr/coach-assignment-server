@@ -3,14 +3,6 @@
 ## Overview
 Build a basic appointment booking API that handles scheduling across multiple coaches.
 
-## The Challenge
-
-Build a simple scheduling system with 4 endpoints that:
-- Shows available appointment slots
-- Books appointments without double-booking
-- Handles webhook events from external systems
-- Shows how appointments are distributed among coaches
-
 ### APIs Provided
 
 #### 1. Get Available Slots
